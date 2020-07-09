@@ -5,15 +5,10 @@ import java.util.List;
 
 public class Permutation {
 
-    public static void main(String[] args) {
-        Permutation t=new Permutation();
-        t.permute(new int[]{1, 2, 3});
-    }
-
-    private List<List<Integer>> res = new ArrayList<>();
+    List<List<Integer>> res = new ArrayList<>();
 
     //声明一个布尔数组，用来判断某个索引位置的数字是否被使用过了
-    private boolean[] used;
+    boolean[] used;
 
     public List<List<Integer>> permute(int[] nums) {
         if (nums.length == 0) {

@@ -1,20 +1,19 @@
 package Data_Structure;
 
+import Tools.Permutation;
+import java.util.List;
+
 public class Maze {
 //    先定义一个迷宫
 //    最短路径问题：在我们没有学更好的寻路算法之前，认为路径长短只跟我们寻路的策略有关
     public static void main(String[] args) {
         Maze maze = new Maze(7);
-        maze.buildWall(3, 2);
-        maze.buildWall(1, 2);
-        maze.buildWall(2, 2);
-        maze.buildWall(5, 4);
-        maze.buildWall(4, 4);
-        maze.buildWall(3, 4);
-//        maze.findWayFrom(1, 1);
-//        maze.showMaze();
+        maze.initialize();
+        maze.shortestWayFrom(1, 1);
+        maze.showMaze();
     }
 
+    int step;
     int[][] maze;
     int row, column;
 
@@ -54,6 +53,7 @@ public class Maze {
     }
 
     public void initialize() {
+        maze = new int[row][column];
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 if (i == 0 || i == row - 1 || j == 0 || j == column - 1) {
@@ -61,6 +61,12 @@ public class Maze {
                 }
             }
         }
+        maze[3][2] = 1;
+        maze[1][2] = 1;
+        maze[2][2] = 1;
+        maze[5][4] = 1;
+        maze[4][4] = 1;
+        maze[3][4] = 1;
     }
 
     public void buildWall(int posX, int posY) {
@@ -71,32 +77,55 @@ public class Maze {
         }
     }
 
-    public void shortestWayFrom(int startX,int startY){
-        int step;
-        int tempStep;
-        int[][] tempMaze;
+    public void shortestWayFrom(int startX, int startY) {
+        int tempStep = 99;
+        int[][] tempMaze = new int[row][column];
+        List<List<Integer>> priorList = new Permutation().permute(new int[]{1, 2, 3, 4});
+        for (List<Integer> prior : priorList) {
+            step = 0;
+            findWayFrom(startX, startY, prior);
+//            showMaze();
+//            System.out.println();
+            if (step < tempStep) {
+                tempStep = step;
+                tempMaze = maze.clone();
+            }
+            initialize();
+        }
+        maze = tempMaze.clone();
     }
 
-    public boolean findWayFrom(int posX, int posY) {
+    public boolean findWayFrom(int posX, int posY, List<Integer> prior) {
         if (maze[row - 2][column - 2] == 2) {
             return true;
         } else {
             if (maze[posX][posY] == 0) {//如果这个点没有走过
                 maze[posX][posY] = 2;//先假定这个点可以走通
-//                寻路的顺序，下右上左
-                if (findWayFrom(posX + 1, posY)) {//下
-                    return true;
-                }else if (findWayFrom(posX, posY + 1)) {
-                    return true;//右
-                } else if (findWayFrom(posX - 1, posY)) {
-                    return true;//上
-                } else if (findWayFrom(posX, posY - 1)) {
-                    return true;//左
-                } else {//实在走不通
-                    maze[posX][posY] = 3;
-                    return false;
+                step++;
+                for (int value : prior) {
+                    switch (value) {
+                        case 1:
+                            if (findWayFrom(posX - 1, posY, prior)) {
+                                return true;//上
+                            }
+                        case 2:
+                            if (findWayFrom(posX + 1, posY, prior)) {
+                                return true;//下
+                            }
+                        case 3:
+                            if (findWayFrom(posX, posY - 1, prior)) {
+                                return true;//左
+                            }
+                        case 4:
+                            if (findWayFrom(posX, posY + 1, prior)) {
+                                return true;//右
+                            }
+                    }
                 }
-            } else return false;//maze[][]==1,2,3;
+                maze[posX][posY] = 3;
+                step--;//maze[][]==1,2,3;
+            }
+            return false;
         }
     }
 }

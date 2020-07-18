@@ -1,4 +1,4 @@
-package Data_Structure;
+package Algorithm;
 
 public class SelectSort extends Sort {
 

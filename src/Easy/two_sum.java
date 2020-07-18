@@ -1,6 +1,6 @@
 package Easy;
 
-public class two_sum {
+public class two_sum {//Hashmap待写
     public int[] Two_Sum_Original(int[] nums, int target) {
         int[] index = new int[]{0, 0};
         for (int i = 0; i < nums.length - 1; i++) {

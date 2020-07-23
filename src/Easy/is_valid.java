@@ -5,6 +5,38 @@ import java.util.Stack;
 
 public class is_valid {
 
+    public static void main(String[] args) {
+
+        is_valid t = new is_valid();
+//        System.out.println(t.isValid_Original("()"));
+//        System.out.println(t.isValid_Original("()[]{}"));
+//        System.out.println(t.isValid_Original("(]"));
+//        System.out.println(t.isValid_Original("([)]"));
+//        System.out.println(t.isValid_Original("{[]}"));
+//        System.out.println("\n");
+//        System.out.println(t.isValid_Specific(""));
+//        System.out.println(t.isValid_Specific("["));
+//        System.out.println(t.isValid_Specific("}]"));
+//        System.out.println(t.isValid_Specific("([)"));
+//        System.out.println(t.isValid_Specific("{{)}"));
+//        System.out.println(t.isValid_Specific("(([]){})"));
+//        System.out.println(t.isValid_SubString("(([]){})"));
+//        System.out.println(t.isValid_SubString("}]"));
+//        System.out.println(t.isValid_SubString("{{)}"));
+//        System.out.println(t.isValid_SubString("(){}[]"));
+//        System.out.println(t.isValid_SubString("(]"));
+//        System.out.println(t.isValid_SubString("([)]"));
+//        System.out.println(t.isValid_SubString("{[]}"));
+//        System.out.println(t.isValid_Specific("()"));
+//        System.out.println(t.isValid_Specific("()[]{}"));
+//        System.out.println(t.isValid_Specific("(]"));
+//        System.out.println(t.isValid_Specific("([)]"));
+//        System.out.println(t.isValid_Specific("{[]}"));
+        System.out.println(t.isValid_Stack(""));
+        System.out.println(t.isValid_Stack("([)"));
+        System.out.println(t.isValid_Stack("(([]){})"));
+    }
+
     HashMap<Character,Character> map=new HashMap<>();
 
     public boolean isValid_Original(String s) {

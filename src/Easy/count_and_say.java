@@ -5,13 +5,18 @@ import java.util.ArrayList;
 public class count_and_say {
 
 //    ArrayList<String> says = new ArrayList<>();
-
 //    public count_and_say() {
 //        says.add("1");
 //        for (int i = 1; i < 30; i++) {
 //            says.add(Generate(says.get(i - 1)));
 //        }
 //    }
+    public static void main(String[] args) {
+        count_and_say t = new count_and_say();
+        for (int i = 1; i <= 30; i++) {
+            System.out.println(t.Say_Original(i));
+        }
+    }
 
     public String Say_Original(int n) {
         String say = "1";

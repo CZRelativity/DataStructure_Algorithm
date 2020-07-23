@@ -1,6 +1,13 @@
 package Easy;
 
 public class reverse {
+    public static void main(String[] args) {
+        reverse t = new reverse();
+        System.out.println(t.Reverse_Original(123));
+        System.out.println(t.Reverse_Simple(-123));
+        System.out.println(t.Reverse_String_Exception(120));
+    }
+
     public int Reverse_Original(int x) {
         int temp = x;
         short x_bit = 0;

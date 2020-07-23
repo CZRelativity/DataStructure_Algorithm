@@ -4,6 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class roma2int {
+    public static void main(String[] args) {
+        roma2int t = new roma2int();
+        System.out.println(t.Roma_Original("III"));
+        System.out.println(t.Roma_Original("IV"));
+        System.out.println(t.Roma_Original("IX"));
+        System.out.println(t.Roma_Original("LVIII"));
+        System.out.println(t.Roma_Original("MCMXCIV"));
+    }
+
     public int Roma_Original(String s) {
         char[] roma_chars = s.toCharArray();
         int result = 0;

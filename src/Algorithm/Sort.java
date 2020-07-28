@@ -13,7 +13,7 @@ public class Sort {
         Date d1=new Date();
         System.out.println(Arrays.toString(sort(arr)));
         Date d2=new Date();
-        System.out.println("Sort "+size+"cost "+": "+(d2.getTime()-d1.getTime())+
+        System.out.println("Sort "+size+" Integers cost "+(d2.getTime()-d1.getTime())+
                 "ms by "+this.getClass().getSimpleName());
     }
 

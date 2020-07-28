@@ -13,8 +13,8 @@ public class Search {
         Date d1=new Date();
         System.out.println(search(arr,target));
         Date d2=new Date();
-        System.out.println("Search "+size+" Integers cost: "+(d2.getTime()-d1.getTime())
-                +" ms by"+this.getClass().getSimpleName());
+        System.out.println("Search "+size+" Integers cost "+(d2.getTime()-d1.getTime())
+                +" ms by "+this.getClass().getSimpleName());
     }
 
     public int search(int[] arr,int find){

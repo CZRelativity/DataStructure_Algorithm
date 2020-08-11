@@ -48,7 +48,7 @@ public class InsertSort extends Sort {
     }
 
     //更新通过API拷贝数组
-    public int[] sort_(int[] arr){
+    public int[] sort_api(int[] arr){
         int[] ordered=new int[]{arr[0]};
         int insert;
         for (int i=1;i<arr.length;i++){
@@ -86,7 +86,7 @@ public class InsertSort extends Sort {
             insert=arr[i];
             index=i-1;
             while(index>=0 && insert<arr[index]){//一样的思路，从0到i-1是ordered数组，i以后是依次待插入的元素（i同样是ordered数组的length）
-//                从i-1到0寻找插入点，寻找的同时不断一直把前面的值后移一位，给插入元素留一个位置，由于是倒着查找的，所以只要大于等于就可以放在留的位置了
+//                从i-1到0从大到小寻找插入点，寻找的同时不断一直把前面的值后移一位，给插入元素留一个位置，由于是倒着查找的，所以只要要插入的大于等于就可以放在留的位置了
                 arr[index+1]=arr[index];
                 index--;
             }

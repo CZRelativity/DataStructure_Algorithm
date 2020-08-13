@@ -21,7 +21,7 @@ public class BubbleSort extends Sort{
                     temp=arr[j+1];
                     arr[j+1]=arr[j];
                     arr[j]=temp;
-                    flag=true;
+                    flag=true;//因为是挨个比较的，如果一趟没有交换过，那么就说明已经排好了，可以退出节省时间
                 }
             }
             if (!flag){

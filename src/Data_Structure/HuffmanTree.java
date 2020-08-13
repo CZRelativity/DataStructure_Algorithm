@@ -41,10 +41,8 @@ public class HuffmanTree {
         int size=list.size();
         Node n1,n2;
         while(size>1){
-            n1=list.get(0);
-            list.remove(0);
-            n2=list.get(0);
-            list.remove(0);//取前两个就是连着取第一个就行了，因为remove了以后会自动调整index
+            n1=list.remove(0);
+            n2=list.remove(0);//remove会返回被移除的元素,取前两个就是连着取第一个就行了，因为remove了以后会自动调整index
             list.add(new Node(n1.data+ n2.data,n1,n2));
             list.sort(comparator);//这里用comparator写了
             size=list.size();

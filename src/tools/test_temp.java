@@ -2,6 +2,7 @@ package tools;
 
 public class test_temp {
     public static void main(String[] args) {
+
         int[][] nums=new int[7][8];
         System.out.println(nums.length);
         for (int[] row:nums){

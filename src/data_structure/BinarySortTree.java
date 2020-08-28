@@ -13,6 +13,7 @@ public class BinarySortTree extends algorithm.Sort {
         t.searchDelete(t.root,null,false,2);
         t.inOrderList(t.root);
         System.out.println();
+
         t.add(new SimpleNode(2));
         t.searchDelete(t.root,null,false,1);
         t.inOrderList(t.root);

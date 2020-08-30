@@ -146,7 +146,7 @@ public class BinarySortTree extends algorithm.Sort {
                 SimpleNode tempParent=null;
                 int tempNo;
 
-                //不能直接把某个结点=null吗？不能
+                //不能直接把某个结点=null吗？不能,只能使指针不指向他
                 while(tempNode.left!=null){
                     tempParent=tempNode;
                     tempNode=tempNode.left;

@@ -1,6 +1,7 @@
 package algorithm;
 
 public class BinarySearch extends Search{
+
     public static void main(String[] args){
         BinarySearch t=new BinarySearch();
         t.testRandom(8000,1000);
@@ -21,6 +22,8 @@ public class BinarySearch extends Search{
             return mid;
         }else if(find<arr[mid]){
             return searchOfRange(arr,find,left,mid-1);
-        }else return searchOfRange(arr,find,mid+1,right);
+        }else {
+            return searchOfRange(arr,find,mid+1,right);
+        }
     }
 }

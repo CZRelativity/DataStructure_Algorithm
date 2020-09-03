@@ -11,7 +11,9 @@ public class Search {
         }
         System.out.println(Arrays.toString(new RadixSort().sort(arr)));
         Date d1=new Date();
-        System.out.println(search(arr,target));
+        int result=search(arr,target);
+        System.out.println(result==-1?"Did not find the target!!!":
+                "Located the target at index "+result);
         Date d2=new Date();
         System.out.println("Search "+size+" Integers cost "+(d2.getTime()-d1.getTime())
                 +" ms by "+this.getClass().getSimpleName());

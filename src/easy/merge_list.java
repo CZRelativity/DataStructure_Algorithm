@@ -1,16 +1,16 @@
 package easy;
 
 import tools.ListNode;
-import tools.ListNode_Tool;
+import tools.ListNodeTool;
 
 public class merge_list {
     public static void main(String[] args) {
         int[] nums1={1,2,4};
         int[] nums2={1,3,4};
         merge_list t=new merge_list();
-        ListNode l1= ListNode_Tool.Build_List(nums1);
-        ListNode l2=ListNode_Tool.Build_List(nums2);
-        ListNode_Tool.Output_List(t.Merge_Original(l1,l2));
+        ListNode l1= ListNodeTool.buildList(nums1);
+        ListNode l2= ListNodeTool.buildList(nums2);
+        ListNodeTool.outputList(t.Merge_Original(l1,l2));
     }
 
     public ListNode Merge_Original(ListNode l1, ListNode l2) {

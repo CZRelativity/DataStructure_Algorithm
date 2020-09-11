@@ -20,6 +20,9 @@ public class Greedy {
     //使用有序且可以用下标查找的List集合！
     List<String[]> radios=new ArrayList<>();
 
+    /** 贪心算法解集合覆盖问题
+     * @return
+     */
     public int[] solve(){
         //遍历次数
         int size=radios.size();

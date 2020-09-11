@@ -22,6 +22,9 @@ public class HuffmanTree {
         }
     };
 
+    //lambda写法
+    //Comparator<Node> comparator=Comparator.comparingInt(n -> n.data);
+
     public void preOrderList(Node node){
         System.out.print(node.data+" ");
         if(node.left!=null){
@@ -67,6 +70,7 @@ public class HuffmanTree {
         @Override
         public int compareTo(Node node) {//这个有点绕，再梳理一下：
             //this是第一个元素，node是用来比较的第二个元素，返回负值的话，表示this比node小，排序时放在前面
+            //与本来的第一个第二个同序，所以是顺序
             //想要把小的放在后面即倒序，就要这时返回正值
             return this.data-node.data;//这个表达式是this小的时候返回负值,相反的话就是倒序
         }

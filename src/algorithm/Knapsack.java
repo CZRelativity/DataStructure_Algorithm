@@ -2,10 +2,10 @@ package algorithm;
 
 import java.util.Arrays;
 
-public class KnapsackProblem {
+public class Knapsack {
 
     public static void main(String[] args) {
-        KnapsackProblem t = new KnapsackProblem();
+        Knapsack t = new Knapsack();
         t.value = new int[]{0, 30, 20, 15};
         t.weight = new int[]{0, 4, 3, 1};
         t.solve();
@@ -15,7 +15,7 @@ public class KnapsackProblem {
     private int[] weight;
     private int[][] totalValue;
 
-    public KnapsackProblem() {
+    public Knapsack() {
 
     }
 

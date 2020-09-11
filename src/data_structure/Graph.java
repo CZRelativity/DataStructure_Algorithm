@@ -19,15 +19,15 @@ public class Graph {
         t1.dfs();
         t1.bfs();
 
-        t2.addEdges(0, 1, 1);
-        t2.addEdges(0, 2, 1);
-        t2.addEdges(1, 3, 1);
-        t2.addEdges(1, 4, 1);
-        t2.addEdges(3, 7, 1);
-        t2.addEdges(4, 7, 1);
-        t2.addEdges(2, 5, 1);
-        t2.addEdges(2, 6, 1);
-        t2.addEdges(5, 6, 1);
+        t2.addEdge(0, 1, 1);
+        t2.addEdge(0, 2, 1);
+        t2.addEdge(1, 3, 1);
+        t2.addEdge(1, 4, 1);
+        t2.addEdge(3, 7, 1);
+        t2.addEdge(4, 7, 1);
+        t2.addEdge(2, 5, 1);
+        t2.addEdge(2, 6, 1);
+        t2.addEdge(5, 6, 1);
 
         t2.dfs();
         t2.bfs();
@@ -188,7 +188,7 @@ public class Graph {
      * @param v2     顶点2下标
      * @param weight 权重
      */
-    public void addEdges(int v1, int v2, int weight) {
+    public void addEdge(int v1, int v2, int weight) {
         edges[v1][v2] = weight;
         edges[v2][v1] = weight;
         numEdges++;

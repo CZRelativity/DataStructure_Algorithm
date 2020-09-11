@@ -33,7 +33,7 @@ public class KMP {
         //先求s2的next数组
         char[] s1Arr=s1.toCharArray();
         char[] s2Arr=s2.toCharArray();
-        int[] next=nextArr(s2Arr);
+        int[] next= getNextArr(s2Arr);
         for(int i1=0,i2=0;i1<=s1Arr.length-s2Arr.length;){
             // i1不要回溯了
             if(s1Arr[i1]==s2Arr[i2]){
@@ -55,7 +55,7 @@ public class KMP {
         return -1;
     }
 
-    public int[] nextArr(char[] s2Arr){
+    public int[] getNextArr(char[] s2Arr){
         // next[]不写成1到length就会报错吗 ???
         int[] next=new int[s2Arr.length+1];
         int j=2;

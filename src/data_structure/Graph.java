@@ -89,7 +89,7 @@ public class Graph {
      *
      * @param vertexIndex 顶点的下标，表示从该顶点出发搜索邻接节点
      */
-    public void onDFS(int vertexIndex) {
+    private void onDFS(int vertexIndex) {
         //这里起始下标是1，因为确实不用再考虑首个顶点了
         //2、直接从第二节结点（下标1）开始查找当前结点的第一个邻接节点（在邻接数组中）
         for (int i = 1; i < getNumVertex(); i++) {

@@ -1,32 +1,26 @@
 package algorithm;
 
+import data_structure.GraphExample;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Dijkstra {
+public class Dijkstra extends GraphExample {
     public static void main(String[] args) {
-        Dijkstra t = new Dijkstra(new String[]{"A", "B", "C", "D", "E", "F", "G"},
-                new int[][]{{0, 5, 7, 0, 0, 0, 2}, {5, 0, 0, 9, 0, 0, 3}, {7, 0, 0, 0, 8, 0, 0},
-                        {0, 9, 0, 0, 0, 4, 0}, {0, 0, 8, 0, 0, 5, 4}, {0, 0, 0, 4, 5, 0, 6},
-                        {2, 3, 0, 0, 4, 6, 0}});
-
+        Dijkstra t = new Dijkstra();
         t.dijkstra(6, 3);
     }
 
-    public Dijkstra(String[] vertexes, int[][] edges) {
+    public Dijkstra() {
         if (vertexes.length == edges.length) {
-            this.edges = edges;
             Collections.addAll(this.vertexList, vertexes);
-            this.size = edges.length;
         } else {
             System.out.println("初始化对象失败，请检查顶点和邻接矩阵是否匹配！");
         }
     }
 
     private List<String> vertexList = new ArrayList<>();
-    private int[][] edges;
-    private int size;
 
     /**
      * 迪杰斯特拉算法 解图的最短路径问题
@@ -90,10 +84,13 @@ public class Dijkstra {
         int v = targetVertex;
         StringBuilder result = new StringBuilder();
         while (v != startVertex) {
-            result.append(vertexList.get(v)).append(" - ");
+            result.append(vertexList.get(v)).append(" >- ");
             v = preVertex[v];
         }
+        System.out.println("从"+getVertex(startVertex)+"到"+getVertex(targetVertex)+"的最短路径：");
         System.out.println(result.append(vertexList.get(startVertex)).reverse());
+        System.out.println("长度：" +minDistance);
+
     }
 
 }

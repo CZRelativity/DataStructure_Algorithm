@@ -43,6 +43,7 @@ public class Graph {
      * 邻接数组
      */
     int[][] edges;
+
     int numEdges;
     /**
      * 访问标记

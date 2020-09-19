@@ -3,11 +3,11 @@ package easy;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class is_valid {
+public class isValid {
 
     public static void main(String[] args) {
 
-        is_valid t = new is_valid();
+        isValid t = new isValid();
 //        System.out.println(t.isValid_Original("()"));
 //        System.out.println(t.isValid_Original("()[]{}"));
 //        System.out.println(t.isValid_Original("(]"));

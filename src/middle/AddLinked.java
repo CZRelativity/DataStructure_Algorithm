@@ -12,17 +12,17 @@ public class AddLinked {
         ListNode l2 = ListNodeTool.buildList(nums2);
         ListNode l3 = ListNodeTool.buildList(nums3);
         AddLinked op = new AddLinked();
-        ListNode head = op.addTwoNumbers_Original(l1, l2);
+        ListNode head = op.addTwoNumbersOriginal(l1, l2);
         ListNodeTool.outputList(head);
         System.out.println("\n");
-        head = op.addTwoNumbers_Original(l1, l3);
+        head = op.addTwoNumbersOriginal(l1, l3);
         ListNodeTool.outputList(head);
         System.out.println("\n");
-        head = op.addTwoNumbers_Original(l2, l3);
+        head = op.addTwoNumbersOriginal(l2, l3);
         ListNodeTool.outputList(head);
     }
 
-    public ListNode addTwoNumbers_Original(ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbersOriginal(ListNode l1, ListNode l2) {
         ListNode head = new ListNode(0);  //对象就是指针
         ListNode end = head;  //开始创建一个0作为起点
         int carry = 0;

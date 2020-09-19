@@ -1,24 +1,21 @@
 package algorithm;
 
+import data_structure.GraphExample;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Prim {
+public class Prim extends GraphExample {
 
     public static void main(String[] args) {
-        Prim t = new Prim(new String[]{"A", "B", "C", "D", "E", "F", "G"},
-                new int[][]{{0, 5, 7, 0, 0, 0, 2}, {5, 0, 0, 9, 0, 0, 3}, {7, 0, 0, 0, 8, 0, 0},
-                        {0, 9, 0, 0, 0, 4, 0}, {0, 0, 8, 0, 0, 5, 4}, {0, 0, 0, 4, 5, 0, 6},
-                        {2, 3, 0, 0, 4, 6, 0}});
-
+        Prim t = new Prim();
         t.prim();
     }
 
-    public Prim(String[] vertexes, int[][] edges) {
+    public Prim() {
         if (vertexes.length == edges.length) {
             Collections.addAll(vertexList, vertexes);
-            this.edges = edges;
         } else {
             System.out.println("初始化对象失败，请检查顶点和邻接矩阵是否匹配！");
         }
@@ -27,13 +24,8 @@ public class Prim {
     /**
      * 图的邻接数组
      */
-    int[][] edges;
-    List<String> vertexList = new ArrayList<>();
-    /**
-     * 访问标记
-     * 用一个放下标的List倒是确实可以减少一些遍历次数
-     */
-    boolean[] visited;
+    private List<String> vertexList = new ArrayList<>();
+
 
     /**
      * 普里姆算法解修路问题（最小生成树）
@@ -43,7 +35,11 @@ public class Prim {
         int roads = 0;
         int size = vertexList.size();
 
-        visited = new boolean[size];
+        /*
+          访问标记
+          用一个放下标的List倒是确实可以减少一些遍历次数
+         */
+        boolean[] visited = new boolean[size];
         //同样设下标0（A）为起始点
         visited[0] = true;
 
@@ -78,11 +74,6 @@ public class Prim {
             visited[toSelect] = true;
 
         }
-    }
-
-    public void addEdges(int v1, int v2, int weight) {
-        edges[v1][v2] = weight;
-        edges[v2][v1] = weight;
     }
 
 }

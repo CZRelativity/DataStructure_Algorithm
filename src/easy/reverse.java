@@ -3,12 +3,12 @@ package easy;
 public class reverse {
     public static void main(String[] args) {
         reverse t = new reverse();
-        System.out.println(t.Reverse_Original(123));
-        System.out.println(t.Reverse_Simple(-123));
-        System.out.println(t.Reverse_String_Exception(120));
+        System.out.println(t.reverseOriginal(123));
+        System.out.println(t.reverseSimple(-123));
+        System.out.println(t.reverseStringException(120));
     }
 
-    public int Reverse_Original(int x) {
+    public int reverseOriginal(int x) {
         int temp = x;
         short x_bit = 0;
         while (temp != 0) {
@@ -29,7 +29,7 @@ public class reverse {
         } else return (int) result;
     }
 
-    public int Reverse_String_Exception(int x) {
+    public int reverseStringException(int x) {
         String xString = Integer.toString(x);
         String string = xString;
         short flag = 1;
@@ -44,7 +44,7 @@ public class reverse {
         }
     }
 
-    public int Reverse_Simple(int x) {
+    public int reverseSimple(int x) {
         long temp = 0;
         while (x != 0) {
             temp = temp * 10 + x % 10;

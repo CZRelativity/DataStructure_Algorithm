@@ -1,6 +1,6 @@
 package algorithm;
 
-import data_structure.GraphExample;
+import dataStructure.GraphExample;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,9 +45,11 @@ public class Floyd extends GraphExample {
         for (int midV = 0; midV < size; midV++) {
             int e1, e2, e12;
 
+
             for (int v1 = 0; v1 < size - 1; v1++) {
-                e1 = edges[midV][v1];
+                e1 = edges[v1][midV];
                 if (e1 != 0) {
+                    //每次从顶点1向后遍历所有，就可以找到
                     for (int v2 = v1 + 1; v2 < size; v2++) {
                         e2 = edges[midV][v2];
                         e12 = edges[v1][v2];

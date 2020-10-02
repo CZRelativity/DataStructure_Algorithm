@@ -32,14 +32,14 @@ public class isValid {
 //        System.out.println(t.isValid_Specific("(]"));
 //        System.out.println(t.isValid_Specific("([)]"));
 //        System.out.println(t.isValid_Specific("{[]}"));
-        System.out.println(t.isValid_Stack(""));
-        System.out.println(t.isValid_Stack("([)"));
-        System.out.println(t.isValid_Stack("(([]){})"));
+        System.out.println(t.isValidStack(""));
+        System.out.println(t.isValidStack("([)"));
+        System.out.println(t.isValidStack("(([]){})"));
     }
 
     HashMap<Character,Character> map=new HashMap<>();
 
-    public boolean isValid_Original(String s) {
+    public boolean isValidOriginal(String s) {
         int i = 0;
         while (i < s.length() / 2) {
             if (s.charAt(i) + 1 == s.charAt(i + 1)) {
@@ -51,7 +51,7 @@ public class isValid {
         return true;
     }
 
-    public boolean isValid_Specific(String s) {
+    public boolean isValidSpecific(String s) {
         if (s.equals("")) return true;
         if (s.length() % 2 == 1) return false;
         int i = 0;
@@ -88,7 +88,7 @@ public class isValid {
         return true;
     }
 
-    public boolean isValid_SubString(String s) {
+    public boolean isValidSubString(String s) {
         if (s.equals("")) return true;
         if (s.length() % 2 == 1) return false;
         while (s.contains("()") || s.contains("[]") || s.contains("{}")) {
@@ -105,7 +105,7 @@ public class isValid {
         return s.equals("");
     }
 
-    public boolean isValid_Stack(String s){
+    public boolean isValidStack(String s){
         map.put(')','(');
         map.put(']','[');
         map.put('}','{');

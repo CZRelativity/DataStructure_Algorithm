@@ -51,7 +51,6 @@ public class Permutation {
 //              因为这个栈里面移除的元素也一定是在这个栈里面之前加进去的
             }
         }
-        return;
     }
 
 }

@@ -1,6 +1,6 @@
 package algorithm;
 
-import data_structure.GraphExample;
+import dataStructure.GraphExample;
 
 import java.util.ArrayList;
 import java.util.Collections;

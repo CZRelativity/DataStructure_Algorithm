@@ -117,15 +117,15 @@ public class SingleLinkedList {
     void reverseHeroListNode(){
 //        HeroListNode temp=head;
 //        temp=temp.next;
-        head.next= reverseUtil_Recursion(head.next);
+        head.next= reverseRecursion(head.next);
 //        reverseUtil_Iterate(head);
     }
 
-    HeroListNode reverseUtil_Recursion(HeroListNode head){
+    HeroListNode reverseRecursion(HeroListNode head){
         if (head.next==null){
             return head;//这个递归的条件总会找到最后一个非空节点返回
         }
-        HeroListNode node=reverseUtil_Recursion(head.next);//4返回了，此时3是头，
+        HeroListNode node= reverseRecursion(head.next);//4返回了，此时3是头，
         // 然后之后两句把4指向3，3指向空，其他同理
         head.next.next=head;//下一个节点指向前一个
         head.next=null;//前一个指空，否则两个节点就互相指，循环了
@@ -134,7 +134,7 @@ public class SingleLinkedList {
 //        node倒其实一直没有变，每次返回的都是指4的指针，每个栈里面不同的就是局部变量head
     }
 
-    void reverseUtil_Iterate(HeroListNode head){
+    void reverseIterate(HeroListNode head){
         if (head==null||head.next==null){
             return;
         }

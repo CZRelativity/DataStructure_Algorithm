@@ -1,8 +1,8 @@
 package easy;
 
-public class climbStairs {
+public class climbStairs70 {
     public static void main(String[] args) {
-        climbStairs t = new climbStairs();
+        climbStairs70 t = new climbStairs70();
         System.out.println(t.climbOriginal(1));
         System.out.println(t.climbOriginal(2));
         System.out.println(t.climbOriginal(3));

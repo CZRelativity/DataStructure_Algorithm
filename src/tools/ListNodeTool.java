@@ -1,13 +1,19 @@
 package tools;
 
+import java.util.List;
+
 public class ListNodeTool {
 
     public static void outputList(ListNode head) {
-        while (head != null) {
-            System.out.println(head.val);
+        if(head==null){
+            System.out.print("null");
+            return;
+        }
+        while (head.next != null) {
+            System.out.print(head.val+" -> ");
             head = head.next;
         }
-        System.out.println();
+        System.out.print(head.val);
     }
 
     public static ListNode buildList(int[] nums) {
@@ -21,6 +27,14 @@ public class ListNodeTool {
             end=end.next;
         }
         return head;
+    }
+
+    public static ListNode getEndNode(ListNode head){
+        ListNode end=head;
+        while(end.next!=null){
+            end=end.next;
+        }
+        return end;
     }
 
     public static ListNode buildList(int[] nums,int cycConnectPos){

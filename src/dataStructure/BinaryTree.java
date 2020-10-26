@@ -1,42 +1,46 @@
 package dataStructure;
 
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
 
     public static void main(String[] args) {
         BinaryTree t = new BinaryTree();
-//        SimpleNode root=t.buildOrderBinaryTree(new int[]{1,2,3,4,5,6,7},0);
-        SimpleNode root = t.buildByPreAndInOrderArr(new int[]{3,9,20,15,7}, new int[]{9,3,15,20,7}, 0, 4, 0, 4);
+        SimpleNode root=t.buildOrderBinaryTree(new int[]{1,2,3,4,5,6,7},0);
+//        SimpleNode root = t.buildOnPreAndInOrderArr(new int[]{3,9,20,15,7}, new int[]{9,3,15,20,7}, 0, 4, 0, 4);
 //        t.preOrderList(root);
 //        System.out.println();
-        t.inOrderList(root);
-        System.out.println();
-        t.inOrderLiterateList(root);
-        System.out.println();
+//        t.inOrderList(root);
+//        System.out.println();
+//        t.inOrderLiterateList(root);
+//        System.out.println();
 //        t.postOrderList(root);
 //        System.out.println();
 //        t.postOrderDelete(root,3);
+        t.bfList(root);
     }
 
     //前序中序后序遍历
-    void preOrderList(SimpleNode node) {
-        System.out.print(node.id + " ");
-        if (node.left != null) {
-            preOrderList(node.left);
+    void preOrderList(SimpleNode root) {
+        System.out.print(root.id + " ");
+        if (root.left != null) {
+            preOrderList(root.left);
         }
-        if (node.right != null) {
-            preOrderList(node.right);
+        if (root.right != null) {
+            preOrderList(root.right);
         }
     }
 
-    void inOrderList(SimpleNode node) {
-        if (node.left != null) {
-            inOrderList(node.left);
+    void inOrderList(SimpleNode root) {
+        if (root.left != null) {
+            inOrderList(root.left);
         }
-        System.out.print(node.id + " ");
-        if (node.right != null) {
-            inOrderList(node.right);
+        System.out.print(root.id + " ");
+        if (root.right != null) {
+            inOrderList(root.right);
         }
     }
 
@@ -62,15 +66,35 @@ public class BinaryTree {
         }
     }
 
-    void postOrderList(SimpleNode node) {
-        if (node.left != null) {
-            postOrderList(node.left);
+    void postOrderList(SimpleNode root) {
+        if (root.left != null) {
+            postOrderList(root.left);
         }
-        if (node.right != null) {
-            postOrderList(node.right);
+        if (root.right != null) {
+            postOrderList(root.right);
         }
-        System.out.print(node.id + " ");
+        System.out.print(root.id + " ");
     }
+
+    /**树的层序遍历（树的广度优先遍历），用队列，就这么愉快
+     * @param root 根结点
+     */
+    void bfList(SimpleNode root){
+        Queue<SimpleNode> queue=new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            SimpleNode node=queue.remove();
+            System.out.print(node.id+" ");
+            //最好不要往队列中插入null，虽然在元素上不会有影响，但是会影响到size的计算
+            if(node.left!=null){
+                queue.add(node.left);
+            }
+            if(node.right!=null){
+                queue.add(node.right);
+            }
+        }
+    }
+
     //前序中序后序查找
 
     SimpleNode inOrderSearch(SimpleNode node, int find) {
@@ -143,7 +167,7 @@ public class BinaryTree {
         return root;
     }
 
-    SimpleNode buildByPreAndInOrderArr(int[] pre, int[] in, int preStartIndex, int preEndIndex, int inStartIndex, int inEndIndex) {
+    SimpleNode buildOnPreAndInOrderArr(int[] pre, int[] in, int preStartIndex, int preEndIndex, int inStartIndex, int inEndIndex) {
         if (preStartIndex == preEndIndex) {
             return new SimpleNode(pre[preStartIndex]);
         }
@@ -164,12 +188,12 @@ public class BinaryTree {
             * preEndIndex 新的起始Index+划分出来的左半in数组长度leftLength得到pre数组中下半部分的起点，再-1得到这部分的终点
             * 以i划分的左半in数组，索引是原in起点到i的左边为止
             */
-            root.left = buildByPreAndInOrderArr(pre, in, preStartIndex + 1,
+            root.left = buildOnPreAndInOrderArr(pre, in, preStartIndex + 1,
                     preStartIndex+leftLength, inStartIndex, i - 1);
             /*右子树:
             * preStartIndex 左子树preEndIndex+1
             * */
-            root.right = buildByPreAndInOrderArr(pre, in, preStartIndex+leftLength+1,
+            root.right = buildOnPreAndInOrderArr(pre, in, preStartIndex+leftLength+1,
                     preEndIndex, i + 1, inEndIndex);
         }
         return root;

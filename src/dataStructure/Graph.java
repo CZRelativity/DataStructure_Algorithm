@@ -107,7 +107,7 @@ public class Graph {
     }
 
     /**
-     * BroadFirstSearch 图的广度优先搜索（遍历）
+     * BroadFirstSearch 图的广度优先搜索（遍历），先进先出，同样使用队列
      */
     public void bfs() {
         visited = new boolean[getNumVertex()];

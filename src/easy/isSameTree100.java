@@ -6,10 +6,10 @@ import tools.TreeNodeTool;
 public class isSameTree100 {
     public static void main(String[] args){
         isSameTree100 t=new isSameTree100();
-        TreeNode h1= TreeNodeTool.buildOrderBinaryTree(new int[]{1,2,3,4,5},0);
-        TreeNode h2=TreeNodeTool.buildOrderBinaryTree(new int[]{1,2,3,4,6},0);
-        TreeNode h3=TreeNodeTool.buildOrderBinaryTree(new int[]{1,2,1},0);
-        TreeNode h4=TreeNodeTool.buildOrderBinaryTree(new int[]{1,1,2},0);
+        TreeNode h1= TreeNodeTool.buildOrderBt(new Integer[]{1,2,3,4,5},0);
+        TreeNode h2=TreeNodeTool.buildOrderBt(new Integer[]{1,2,3,4,6},0);
+        TreeNode h3=TreeNodeTool.buildOrderBt(new Integer[]{1,2,1},0);
+        TreeNode h4=TreeNodeTool.buildOrderBt(new Integer[]{1,1,2},0);
         boolean result= t.solveOriginal(h1,h2);
         System.out.println(result);
     }

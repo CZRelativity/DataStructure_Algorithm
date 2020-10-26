@@ -127,8 +127,8 @@ public class SingleLinkedList {
         }
         HeroListNode node= reverseRecursion(head.next);//4返回了，此时3是头，
         // 然后之后两句把4指向3，3指向空，其他同理
-        head.next.next=head;//下一个节点指向前一个
-        head.next=null;//前一个指空，否则两个节点就互相指，循环了
+        head.next.next=head;//下一个节点指向前一个，4指3
+        head.next=null;//前一个指空，否则两个节点就互相指，循环了，3指空
         //确实对象名其实是指针，用任何一个copy的指针去修改对象的属性，所有copy指针找到的那个对象都改了
         return node;//就返回最后一个节点（反转后的头节点）
 //        node倒其实一直没有变，每次返回的都是指4的指针，每个栈里面不同的就是局部变量head

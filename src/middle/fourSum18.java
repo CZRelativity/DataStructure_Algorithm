@@ -8,30 +8,25 @@ import java.util.List;
 public class fourSum18 {
     public static void main(String[] args) {
         fourSum18 t = new fourSum18();
-        int[] egn1 = new int[]{1, 0, -1, 0, -2, 2};
-        int egt1 = 0;
-        int[] egn2 = new int[]{2, 0, 3, 0, 1, 2, 4};
-        int egt2 = 7;
-        int[] egn3 = new int[]{0, 0, 0, 0};
-        int egt3 = 0;
-        int[] egn4 = new int[]{0, 4, -5, 2, -2, 4, 2, -1, 4};
-        int egt4 = 12;
-        //重复解
-        int[] egn5 = new int[]{-1, -5, -5, -3, 2, 5, 0, 4};
-        int egt5 = -7;
-        t.fourSum(egn1, egt1);
-        for (List<Integer> intList : t.res) {
-            for (int i : intList) {
-                System.out.print(i + " ");
-            }
+        t.test();
+    }
+
+    private void test(){
+        int[][] egN={{1, 0, -1, 0, -2, 2},{2, 0, 3, 0, 1, 2, 4},{0, 0, 0, 0},
+                {0, 4, -5, 2, -2, 4, 2, -1, 4},{-1, -5, -5, -3, 2, 5, 0, 4},};
+        int[] egT={0,7,0,12,-7,};
+        for(int i=0;i<egN.length;i++){
+            fourSum(egN[i],egT[i]);
+            res.forEach(System.out::println);
             System.out.println();
         }
     }
 
-    List<List<Integer>> res = new ArrayList<>();
+    List<List<Integer>> res;
 
     //四指针，只有32%？
     public List<List<Integer>> fourSum(int[] nums, int target) {
+        res= new ArrayList<>();
         Arrays.sort(nums);
         int left1, right1, left2, right2;
         int curLeft1, curRight1, curLeft2, curSum;

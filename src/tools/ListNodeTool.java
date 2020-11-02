@@ -14,6 +14,7 @@ public class ListNodeTool {
             head = head.next;
         }
         System.out.print(head.val);
+        System.out.println();
     }
 
     public static ListNode buildList(int[] nums) {

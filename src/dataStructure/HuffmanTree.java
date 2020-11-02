@@ -15,12 +15,7 @@ public class HuffmanTree {
 
     List<Node> list = new ArrayList<>();
 
-    Comparator<Node> comparator=new Comparator<>() {
-        @Override
-        public int compare(Node n1, Node n2) {
-            return n1.data-n2.data;
-        }
-    };
+    Comparator<Node> comparator= (n1, n2) -> n1.data-n2.data;
 
     //lambda写法
     //Comparator<Node> comparator=Comparator.comparingInt(n -> n.data);

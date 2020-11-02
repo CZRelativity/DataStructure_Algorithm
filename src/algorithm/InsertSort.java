@@ -6,7 +6,7 @@ public class InsertSort extends Sort {
 
     public static void main(String[] args) {
         InsertSort t = new InsertSort();
-        t.testRandom(8000);
+        t.testRandom(5);
     }
 
     //手动拷贝数组
@@ -86,7 +86,9 @@ public class InsertSort extends Sort {
         int insert;
         int index;
         for(int i=1;i<arr.length;i++){
+            //插入数组的开始
             insert=arr[i];
+            //有序数组的开始
             index=i-1;
             while(index>=0 && insert<arr[index]){
                 //一样的思路，从0到i-1是ordered数组，i以后是依次待插入的元素（i同样是ordered数组的length）

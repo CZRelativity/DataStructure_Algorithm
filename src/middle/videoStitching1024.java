@@ -1,5 +1,8 @@
 package middle;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class videoStitching1024 {
     public static void main(String[] args){
         videoStitching1024 t=new videoStitching1024();
@@ -13,7 +16,7 @@ public class videoStitching1024 {
         int[][] eg4=new int[][]{{0,4,},{2,8},};
         int eg4T=5;
 
-        int res= t.videoStitching(eg4,eg4T);
+        int res= t.dp(eg3,eg3T);
         System.out.println(res);
     }
 
@@ -61,5 +64,23 @@ public class videoStitching1024 {
         if(pick!=-1) {
             greedy(clips, pickTo, to);
         }
+    }
+
+    private int dp(int[][] clips,int T){
+        Arrays.sort(clips, Comparator.comparingInt(ints -> ints[0]));
+        int[] dp=new int[T+1];
+        Arrays.fill(dp,101);
+        dp[0]=0;
+        for(int[] clip:clips){
+            int start=clip[0];
+            int end=clip[1];
+            for(int j=start+1;j<=end&&j<=T;j++){
+                dp[j]=Math.min(dp[j],dp[start]+1);
+            }
+        }
+        if(dp[T]==101){
+            return -1;
+        }
+        return dp[T];
     }
 }

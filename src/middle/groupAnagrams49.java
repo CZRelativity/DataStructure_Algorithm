@@ -27,12 +27,15 @@ public class groupAnagrams49 {
             Arrays.sort(chars);
             strMap.put(str, String.valueOf(chars));
         }
+        //重遍历所有str，按照value值存放
         for (String str : strs) {
+            //先创建第一行
             if (res.isEmpty()) {
                 List<String> newLine = new ArrayList<>();
                 newLine.add(str);
                 res.add(newLine);
             } else {
+                //遍历行,与行首元素的value值比较，相同则属于同一行
                 int i=0;
                 for (;i<res.size();i++) {
                     List<String> line=res.get(i);
@@ -41,6 +44,7 @@ public class groupAnagrams49 {
                         break;
                     }
                 }
+                //没有找到匹配的行，创建新行
                 if(i==res.size()){
                     List<String> newLine = new ArrayList<>();
                     newLine.add(str);

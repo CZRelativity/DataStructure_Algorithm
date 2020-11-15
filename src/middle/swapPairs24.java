@@ -3,9 +3,6 @@ package middle;
 import tools.ListNode;
 import tools.ListNodeTool;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class swapPairs24 {
 
     public static void main(String[] args) {

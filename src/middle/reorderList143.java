@@ -3,7 +3,6 @@ package middle;
 import tools.ListNode;
 import tools.ListNodeTool;
 
-import java.util.List;
 import java.util.Stack;
 
 public class reorderList143 {

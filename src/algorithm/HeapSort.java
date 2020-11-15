@@ -6,8 +6,15 @@ public class HeapSort extends Sort {
 
     public static void main(String[] args) {
         HeapSort t = new HeapSort();
-        System.out.println(Arrays.toString(t.sort(new int[]{6, 4, 8, 5, 7, 9, 1, 3, 2})));
+        t.test();
 //        t.testRandom(8000);
+    }
+
+    private void test(){
+        int[][] eg={{6, 4, 8, 5, 7, 9, 1, 3, 2},{4,6,8,5,9},};
+        for(int[] e:eg){
+            System.out.println(Arrays.toString(sort(e)));
+        }
     }
 
     @Override

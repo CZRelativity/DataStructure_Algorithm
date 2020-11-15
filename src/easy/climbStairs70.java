@@ -18,7 +18,8 @@ public class climbStairs70 {
         climbArray[1] = 1;
         climbArray[2] = 2;
         for (int i = 3; i <= n; i++) {
-            //其实是迭代的思路，但是创建数组的方法把每一步的结果都存储起来了，后面可以直接从数组里面调值
+            /* 其实是迭代的思路，但是创建数组的方法把每一步的结果都存储起来了
+            ，后面可以直接从数组里面调值 */
             climbArray[i] = climbArray[i - 1] + climbArray[i - 2];
         }
         return climbArray[n];

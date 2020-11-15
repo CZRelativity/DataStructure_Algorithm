@@ -6,25 +6,28 @@ import tools.TreeNodeTool;
 public class isSameTree100 {
     public static void main(String[] args){
         isSameTree100 t=new isSameTree100();
-        TreeNode h1= TreeNodeTool.buildOrderBt(new Integer[]{1,2,3,4,5},0);
-        TreeNode h2=TreeNodeTool.buildOrderBt(new Integer[]{1,2,3,4,6},0);
-        TreeNode h3=TreeNodeTool.buildOrderBt(new Integer[]{1,2,1},0);
-        TreeNode h4=TreeNodeTool.buildOrderBt(new Integer[]{1,1,2},0);
-        boolean result= t.solveOriginal(h1,h2);
-        System.out.println(result);
+        t.test();
+    }
+
+    private void test(){
+        Integer[][] eg1={{1,2,3,4,5},{1,2,1},{1,2,3}};
+        Integer[][] eg2={{1,2,3,4,6},{1,1,2},{1,2,3}};
+        for(int i=0;i<eg1.length;i++){
+            TreeNode n1=TreeNodeTool.buildOrderBt(eg1[i]);
+            TreeNode n2=TreeNodeTool.buildOrderBt(eg2[i]);
+            System.out.println(isSameTree(n1,n2));
+        }
     }
 
     //时间100% !!!
-    public boolean solveOriginal(TreeNode n1,TreeNode n2){
-        if(n1==null&&n2==null){
+    public boolean isSameTree(TreeNode p, TreeNode q){
+
+        if(p==null&&q==null){
             return true;
         }
-        if(n1!=null&&n2!=null&&n1.val==n2.val){
-            if(solveOriginal(n1.left,n2.left)){
-                return solveOriginal(n1.right,n2.right);
-            }
-        }
-        return false;
+        return p!=null&&q!=null&&p.val==q.val&&
+                isSameTree(p.left,q.left)&&
+                isSameTree(p.right,q.right);
     }
 
 }

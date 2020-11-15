@@ -1,7 +1,6 @@
 package tools;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class TreeNodeTool {
 
@@ -20,15 +19,39 @@ public class TreeNodeTool {
         return root;
     }
 
-    public static TreeNode buildOrderBt(Integer[] arr) {
-        if(arr.length==0){
+    /* 使用反序列化来处理的时候传入的String里包含空格会打乱Integer.parseInt()方法，
+     * 而如果用例如Arrays.asList(int[]).toString()方法会在每个逗号后自动加一个空格
+     * 不过可以额外使用String.replaceAll(" ","")来处理 */
+    public static TreeNode deserialize(String data) {
+        if(data.length()==2){
+            return null;
+        }
+        List<Integer> builder = new ArrayList<>();
+        int left = 1, right = 1;
+        while (right < data.length()) {
+            char curC = data.charAt(right);
+            if (curC == ',' || curC == ']') {
+                if (Character.isDigit(data.charAt(left))||data.charAt(left)=='-') {
+                    builder.add(Integer.parseInt(data.substring(left, right)));
+                } else {
+                    builder.add(null);
+                }
+                left = right + 1;
+            }
+            right++;
+        }
+        return buildOrderBt(builder.toArray(new Integer[0]));
+    }
+
+    public static TreeNode buildOrderBt(Integer[] builder) {
+        if (builder.length == 0) {
             return null;
         }
         Queue<TreeNode> q1 = new LinkedList<>();
         Queue<TreeNode> q2 = new LinkedList<>();
-        TreeNode root = new TreeNode(arr[0]);
+        TreeNode root = new TreeNode(builder[0]);
         q1.add(root);
-        buildLevel(q1, q2, arr, 1, arr.length);
+        buildLevel(q1, q2, builder, 1, builder.length);
         return root;
     }
 
@@ -39,12 +62,12 @@ public class TreeNodeTool {
 
         while (!q.isEmpty()) {
             TreeNode curNode = q.remove();
-            if (i<l&&arr[i] != null) {
+            if (i < l && arr[i] != null) {
                 curNode.left = new TreeNode(arr[i]);
                 qNext.add(curNode.left);
             }
-            if (i+1<l&&arr[i + 1] != null) {
-                curNode.right = new TreeNode(arr[i+1]);
+            if (i + 1 < l && arr[i + 1] != null) {
+                curNode.right = new TreeNode(arr[i + 1]);
                 qNext.add(curNode.right);
             }
             i += 2;
@@ -54,8 +77,13 @@ public class TreeNodeTool {
     }
 
     public static void outBfBt(TreeNode root) {
+        System.out.println(serialize(root));
+    }
+
+    public static String serialize(TreeNode root) {
+        List<Integer> serialize = new ArrayList<>();
         if (root == null) {
-            return;
+            return serialize.toString();
         }
         Queue<TreeNode> queue1 = new LinkedList<>();
         Queue<TreeNode> queue2 = new LinkedList<>();
@@ -71,24 +99,29 @@ public class TreeNodeTool {
 //        }
 
         //递归写法
-        outLevel(queue1, queue2);
-        System.out.println();
+        serializeLevel(queue1, queue2, serialize);
+        //移除最后多余的null
+        while (serialize.get(serialize.size() - 1) == null) {
+            serialize.remove(serialize.size() - 1);
+        }
+        return serialize.toString().replaceAll(" ", "");
     }
 
-    private static void outLevel(Queue<TreeNode> queue, Queue<TreeNode> nextQueue) {
+    private static void serializeLevel(Queue<TreeNode> queue, Queue<TreeNode> nextQueue, List<Integer> serialize) {
+        //利用集合可以add(null)，会占位置改变size
         if (queue.isEmpty()) {
             return;
         }
         while (!queue.isEmpty()) {
             TreeNode curNode = queue.remove();
-            System.out.print(curNode.val + " ");
-            if (curNode.left != null) {
+            serialize.add(curNode == null ? null : curNode.val);
+            //只要左右结点有一个不是null就应该继续添加的，但是又有1,2,3,null,null,4,5这种情况
+            if (curNode != null) {
                 nextQueue.add(curNode.left);
-            }
-            if (curNode.right != null) {
                 nextQueue.add(curNode.right);
             }
         }
-        outLevel(nextQueue, queue);
+        serializeLevel(nextQueue, queue, serialize);
     }
+
 }

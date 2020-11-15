@@ -1,5 +1,9 @@
 package dataStructure;
 
+import tools.TreeNode;
+
+import java.util.Arrays;
+
 public class AVLTree {
 
     public static void main(String[] args) {
@@ -39,7 +43,6 @@ public class AVLTree {
             add(new SimpleNode(i));
         }
     }
-
 
     public void add(SimpleNode node) {
         if (root == null) {
@@ -126,6 +129,18 @@ public class AVLTree {
         public int height() {
             //理解一下这个递归，
             return Math.max(left == null ? 0 : left.height(), right == null ? 0 : right.height()) + 1;
+        }
+
+        public int minHeight(){
+            if(left==null&&right==null){
+                return 1;
+            }else if(left==null){
+                return right.minHeight();
+            }else if(right==null){
+                return left.minHeight();
+            }else {
+                return Math.min(left.minHeight(),right.minHeight());
+            }
         }
 
         public int getLeftHeight() {

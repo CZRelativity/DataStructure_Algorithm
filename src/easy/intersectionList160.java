@@ -22,7 +22,7 @@ public class intersectionList160 {
     }
 
     /*c表示公共部分，若相交a+c+b+c=b+c+a+c，两指针会在相交结点处相遇
-     * 若不相交，a+b=b+a，两指针相遇处必为null*/
+     * 若不相交，a+b=b+a，两指针相遇处必为null,同样可以得到pA=pB=null*/
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode pA = headA;
         ListNode pB = headB;

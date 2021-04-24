@@ -1,13 +1,13 @@
-package easy;
+package sword;
 
 import tools.TreeNode;
 import tools.TreeNodeTool;
 
-public class MirrorTreeJ27 {
+public class MirrorTree27 {
     public static void main(String[] args){
-        MirrorTreeJ27 t=new MirrorTreeJ27();
+        MirrorTree27 t=new MirrorTree27();
         Integer[] eg1=new Integer[]{4,2,7,1,3,6,9};
-        TreeNode root= TreeNodeTool.buildOrderBt(eg1,0);
+        TreeNode root= TreeNodeTool.buildOrderBT(eg1,0);
         TreeNodeTool.outBfBt(t.mirrorTree(root));
     }
 

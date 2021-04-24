@@ -12,7 +12,7 @@ public class flatten114 {
     private void test() {
         Integer[][] eg = {{}, {1, 2, 5, 3, 4, null, 6}};
         for (Integer[] e : eg) {
-            TreeNode root = TreeNodeTool.buildOrderBt(e);
+            TreeNode root = TreeNodeTool.buildOrderBT(e);
             flattenRecursion(root);
             TreeNodeTool.outBfBt(root);
         }

@@ -6,11 +6,11 @@ public class SingleLinkedList {
 
     public static void main(String[] args) {
         SingleLinkedList singleLinkedList = new SingleLinkedList();
-        HeroListNode l1 = new HeroListNode(1, "宋江", "及时雨");
+        HeroNode l1 = new HeroNode(1, "宋江", "及时雨");
         //非静态内部类需要new OrderListNode.new HeroListNode，不能脱离外部类实体被创建
-        HeroListNode l2 = new HeroListNode(2, "卢俊义", "玉麒麟");
-        HeroListNode l3 = new HeroListNode(3, "吴用", "智多星");
-        HeroListNode l4 = new HeroListNode(4, "林冲", "豹子头");
+        HeroNode l2 = new HeroNode(2, "卢俊义", "玉麒麟");
+        HeroNode l3 = new HeroNode(3, "吴用", "智多星");
+        HeroNode l4 = new HeroNode(4, "林冲", "豹子头");
         singleLinkedList.update(l1);
         singleLinkedList.update(l2);
         singleLinkedList.update(l3);
@@ -32,11 +32,11 @@ public class SingleLinkedList {
 //        singleLinkedList.reverseOutput();
     }
 
-    HeroListNode head = new HeroListNode(0, "", "");
+    HeroNode head = new HeroNode(0, "", "");
     //这个外部类好像就是为了头结点存在的- -，哦还有测试函数
 
-    void update(HeroListNode listNode) {
-        HeroListNode temp = head;
+    void update(HeroNode listNode) {
+        HeroNode temp = head;
         while (true) {
             if (temp.next == null) {
                 temp.next = listNode;
@@ -58,7 +58,7 @@ public class SingleLinkedList {
     }
 
     void delete(int no) {
-        HeroListNode temp = head;
+        HeroNode temp = head;
         while (temp.next != null) {
             if (temp.next.no == no) {
                 temp.next = temp.next.next;//上一个点接上下下个点，实现跳过下个点（delete）
@@ -69,7 +69,7 @@ public class SingleLinkedList {
     }
 
     void output() {
-        HeroListNode temp = head;
+        HeroNode temp = head;
         temp = temp.next;
         while (temp != null) {
             System.out.println(temp.no + " " + temp.name + " " + temp.nickname);
@@ -79,22 +79,22 @@ public class SingleLinkedList {
     }
 
     void reverseOutput(){
-        HeroListNode temp=head.next;
-        Stack<HeroListNode> stack=new Stack<>();
+        HeroNode temp=head.next;
+        Stack<HeroNode> stack=new Stack<>();
         while (temp!=null){
             stack.push(temp);
             temp=temp.next;
         }
         while (!stack.empty()){
 //            System.out.println(stack.pop());
-            HeroListNode t=stack.pop();
+            HeroNode t=stack.pop();
             System.out.println(t.no+" "+t.name+" "+t.nickname);
         }
     }
 
     int validNode(){
         int count=0;
-        HeroListNode temp=head;
+        HeroNode temp=head;
         while(temp.next!=null){
             count++;
             temp=temp.next;
@@ -102,8 +102,8 @@ public class SingleLinkedList {
         return count;
     }
 
-    HeroListNode getNode(int k){
-        HeroListNode temp=head;
+    HeroNode getNode(int k){
+        HeroNode temp=head;
         while (k>0){
             if(temp==null){
                 throw new RuntimeException("节点不存在！");
@@ -121,11 +121,11 @@ public class SingleLinkedList {
 //        reverseUtil_Iterate(head);
     }
 
-    HeroListNode reverseRecursion(HeroListNode head){
+    HeroNode reverseRecursion(HeroNode head){
         if (head.next==null){
             return head;//这个递归的条件总会找到最后一个非空节点返回
         }
-        HeroListNode node= reverseRecursion(head.next);//4返回了，此时3是头，
+        HeroNode node= reverseRecursion(head.next);//4返回了，此时3是头，
         // 然后之后两句把4指向3，3指向空，其他同理
         head.next.next=head;//下一个节点指向前一个，4指3
         head.next=null;//前一个指空，否则两个节点就互相指，循环了，3指空
@@ -134,13 +134,13 @@ public class SingleLinkedList {
 //        node倒其实一直没有变，每次返回的都是指4的指针，每个栈里面不同的就是局部变量head
     }
 
-    void reverseIterate(HeroListNode head){
+    void reverseIterate(HeroNode head){
         if (head==null||head.next==null){
             return;
         }
-        HeroListNode cur=head.next;
-        HeroListNode next=null;
-        HeroListNode reverse_head=new HeroListNode(0,"","");
+        HeroNode cur=head.next;
+        HeroNode next=null;
+        HeroNode reverse_head=new HeroNode(0,"","");
         while (cur!=null){
             next=cur.next;
             cur.next=reverse_head.next;//这个其实应该更好理解，每次推一个cur进这个reverse
@@ -152,13 +152,13 @@ public class SingleLinkedList {
         head.next=reverse_head.next;
     }
 
-    static class HeroListNode {//一个静态内部类
+    static class HeroNode {//一个静态内部类
         int no;
         String name;
         String nickname;
-        HeroListNode next;
+        HeroNode next;
 
-        public HeroListNode(int no, String name, String nickname) {
+        public HeroNode(int no, String name, String nickname) {
             this.no = no;
             this.name = name;
             this.nickname = nickname;

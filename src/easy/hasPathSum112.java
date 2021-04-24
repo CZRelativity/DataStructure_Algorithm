@@ -17,7 +17,7 @@ public class hasPathSum112 {
         int eg2s=1;
         int eg5s=-5;
         int eg6s=-1;
-        TreeNode root= TreeNodeTool.buildOrderBt(eg4);
+        TreeNode root= TreeNodeTool.buildOrderBT(eg4);
         boolean res=t.hasPathSum(root,eg2s);
         System.out.println(res);
     }

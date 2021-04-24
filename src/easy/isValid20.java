@@ -3,41 +3,45 @@ package easy;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class isValid {
+public class isValid20 {
 
     public static void main(String[] args) {
-
-        isValid t = new isValid();
-//        System.out.println(t.isValid_Original("()"));
-//        System.out.println(t.isValid_Original("()[]{}"));
-//        System.out.println(t.isValid_Original("(]"));
-//        System.out.println(t.isValid_Original("([)]"));
-//        System.out.println(t.isValid_Original("{[]}"));
-//        System.out.println("\n");
-//        System.out.println(t.isValid_Specific(""));
-//        System.out.println(t.isValid_Specific("["));
-//        System.out.println(t.isValid_Specific("}]"));
-//        System.out.println(t.isValid_Specific("([)"));
-//        System.out.println(t.isValid_Specific("{{)}"));
-//        System.out.println(t.isValid_Specific("(([]){})"));
-//        System.out.println(t.isValid_SubString("(([]){})"));
-//        System.out.println(t.isValid_SubString("}]"));
-//        System.out.println(t.isValid_SubString("{{)}"));
-//        System.out.println(t.isValid_SubString("(){}[]"));
-//        System.out.println(t.isValid_SubString("(]"));
-//        System.out.println(t.isValid_SubString("([)]"));
-//        System.out.println(t.isValid_SubString("{[]}"));
-//        System.out.println(t.isValid_Specific("()"));
-//        System.out.println(t.isValid_Specific("()[]{}"));
-//        System.out.println(t.isValid_Specific("(]"));
-//        System.out.println(t.isValid_Specific("([)]"));
-//        System.out.println(t.isValid_Specific("{[]}"));
-        System.out.println(t.isValidStack(""));
-        System.out.println(t.isValidStack("([)"));
-        System.out.println(t.isValidStack("(([]){})"));
+        isValid20 t = new isValid20();
+        t.test();
     }
 
-    HashMap<Character,Character> map=new HashMap<>();
+    private void test() {
+        String[] eg = {"", "([)", "(([]){})","["};
+        for (String e : eg) {
+            System.out.println(isValid(e));
+        }
+    }
+
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == ')' || c == ']' || c == '}') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                if (c == ')' && stack.pop() != '(') {
+                    return false;
+                }
+                if (c == ']' && stack.pop() != '[') {
+                    return false;
+                }
+                if (c == '}' && stack.pop() != '{') {
+                    return false;
+                }
+            } else {
+                stack.push(c);
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    HashMap<Character, Character> map = new HashMap<>();
 
     public boolean isValidOriginal(String s) {
         int i = 0;
@@ -105,15 +109,15 @@ public class isValid {
         return s.equals("");
     }
 
-    public boolean isValidStack(String s){
-        map.put(')','(');
-        map.put(']','[');
-        map.put('}','{');
-        Stack<Character> stack=new Stack<>();
-        for (char c:s.toCharArray()){
-            if (map.containsKey(c)){
-                if (stack.empty()||stack.pop()!=map.get(c)) return false;
-            }else stack.push(c);
+    public boolean isValidStack(String s) {
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('}', '{');
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (map.containsKey(c)) {
+                if (stack.empty() || stack.pop() != map.get(c)) return false;
+            } else stack.push(c);
         }
         return stack.empty();
     }

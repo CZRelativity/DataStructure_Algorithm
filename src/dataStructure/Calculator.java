@@ -18,7 +18,7 @@ public class Calculator {
     }
 
     public void SimuCalculator(String exp) {
-        if (!numStack.isEmpty()||!charStack.isEmpty()){
+        if (!numStack.isEmpty() || !charStack.isEmpty()) {
             throw new RuntimeException("计算器未初始化!");
         }
         int index = 0;
@@ -27,16 +27,16 @@ public class Calculator {
         while (index != exp.length()) {
             char charTemp = exp.charAt(index);
             if (charTemp >= '0' && charTemp <= '9') {
-                if (index!=exp.length()-1&&exp.charAt(index + 1) >= '0' && exp.charAt(index + 1) <= '9') {
+                if (index != exp.length() - 1 && exp.charAt(index + 1) >= '0' && exp.charAt(index + 1) <= '9') {
                     mark = index;
                     len++;
                 } else {
                     if (len != 0) {
-                        numStack.push(Integer.parseInt(exp.substring(mark, index+1)));
-                        len=0;
+                        numStack.push(Integer.parseInt(exp.substring(mark, index + 1)));
+                        len = 0;
                         //这里endIndex的意思是取这之前的
                     } else {
-                        numStack.push(charTemp-'0');//*超级厉害的char转int方法，适用于单独数字
+                        numStack.push(charTemp - '0');//*超级厉害的char转int方法，适用于单独数字
                     }
                 }
             } else {
@@ -57,27 +57,29 @@ public class Calculator {
 //        2、插低级高级然后一直高级的话最后符号栈会有一个低级一个高级
 //        3、低级高级再低级最后符号栈会有两个低级，因为再插低级的时候把之前的高级替换了
 //        同级和低级对于符号栈的逻辑是替换
-        while (numStack.top!=0){
+        while (numStack.top != 0) {
             Calculate();
         }
-        System.out.println("Result : "+numStack.pop());
+        System.out.println("Result : " + numStack.pop());
     }
 
-    void Calculate(){
-        int num1=numStack.pop();
-        int num2=numStack.pop();
-        switch (charStack.pop()){
+    void Calculate() {
+        int num1 = numStack.pop();
+        int num2 = numStack.pop();
+        switch (charStack.pop()) {
             case '+':
-                numStack.push(num1+num2);
+                numStack.push(num1 + num2);
                 break;
-            case'-':
-                numStack.push(num2-num1);
+            case '-':
+                numStack.push(num2 - num1);
                 break;
             case '*':
-                numStack.push(num1*num2);
+                numStack.push(num1 * num2);
                 break;
             case '/':
-                numStack.push(num2/num1);
+                numStack.push(num2 / num1);
+                break;
+            default:
                 break;
         }
     }
@@ -110,10 +112,10 @@ public class Calculator {
             }
         }
 
-        T getTop(){
-            if (isEmpty()){
+        T getTop() {
+            if (isEmpty()) {
                 return null;
-            }else{
+            } else {
                 return arr[top];
             }
         }
@@ -127,8 +129,8 @@ public class Calculator {
             }
         }
 
-        void clear(){
-            while (!isEmpty()){
+        void clear() {
+            while (!isEmpty()) {
                 pop();
             }
         }

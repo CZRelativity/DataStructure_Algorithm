@@ -13,8 +13,8 @@ public class isSameTree100 {
         Integer[][] eg1={{1,2,3,4,5},{1,2,1},{1,2,3}};
         Integer[][] eg2={{1,2,3,4,6},{1,1,2},{1,2,3}};
         for(int i=0;i<eg1.length;i++){
-            TreeNode n1=TreeNodeTool.buildOrderBt(eg1[i]);
-            TreeNode n2=TreeNodeTool.buildOrderBt(eg2[i]);
+            TreeNode n1=TreeNodeTool.buildOrderBT(eg1[i]);
+            TreeNode n2=TreeNodeTool.buildOrderBT(eg2[i]);
             System.out.println(isSameTree(n1,n2));
         }
     }

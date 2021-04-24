@@ -1,14 +1,16 @@
 package easy;
 
-public class maxProfit121 {
+class maxProfit121 {
     public static void main(String[] args) {
         maxProfit121 t = new maxProfit121();
-        int[] eg1 = new int[]{7, 1, 5, 3, 6, 4};
-        int[] eg2 = new int[]{7, 6, 4, 3, 1};
-        int[] eg3 = new int[]{};
-        int[] eg4 = new int[]{1};
-        int res = t.solve(eg3);
-        System.out.println(res);
+        t.test();
+    }
+
+    private void test() {
+        int[][] eg = {{7, 1, 5, 3, 6, 4}, {7, 6, 4, 3, 1}, {}, {1}};
+        for (int[] e : eg) {
+            System.out.println(maxProfit(e));
+        }
     }
 
     private int solve(int[] prices) {
@@ -29,5 +31,16 @@ public class maxProfit121 {
             }
         }
         return profit;
+    }
+
+    //只有一次机会，只需要一个前面的最小值和后面的最大值
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int preMin = 10001;
+        for (int price : prices) {
+            max = Math.max(price - preMin, max);
+            preMin = Math.min(price, preMin);
+        }
+        return max;
     }
 }

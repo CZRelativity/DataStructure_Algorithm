@@ -12,7 +12,7 @@ public class levelOrder102 {
     public static void main(String[] args){
         levelOrder102 t=new levelOrder102();
         Integer[] eg1=new Integer[]{3,9,20,null,null,15,7};
-        TreeNode eg= TreeNodeTool.buildOrderBt(eg1,0);
+        TreeNode eg= TreeNodeTool.buildOrderBT(eg1,0);
         t.levelOrder(eg);
         for(List<Integer> level:t.res){
             for(int i:level){

@@ -1,23 +1,39 @@
 package tools;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Test {
 
     public static void main(String[] args) {
-        Test t=new Test();
+        Test t = new Test();
+        t.test(-80, -10, 50, 2);
     }
 
 
-    private void test(){
+    private void test(int startY, int endY, int step, int T) {
 
     }
 
-    private void testString(){
-        
+    private void testString() {
+        String s = "hello";
+        try {
+            System.out.println(Integer.parseInt(s));
+        } catch (NumberFormatException e) {
+            System.out.println(s);
+        }
     }
 
-    private void testBuilderBuffer(){
+    private void testBytes() {
+        byte[] bytes1 = new byte[]{(byte) 143, 0x0a};
+        byte[] bytes2 = new byte[]{(byte) 0x0d, (byte) 0x0a};
+        System.out.println(Arrays.toString(bytes1));
+        System.out.println(Arrays.toString(bytes2));
+    }
+
+    private void testBuilderBuffer() {
         TestBuilderBuffer ts = new TestBuilderBuffer();
         StringBuilder tsBuilder = new StringBuilder();
         StringBuffer tsBuffer = new StringBuffer();
@@ -52,9 +68,9 @@ public class Test {
 
     }
 
-    static Pattern pattern=Pattern.compile("^-?\\d*$");
+    static Pattern pattern = Pattern.compile("^-?\\d*$");
 
-    static boolean isInteger(String s){
+    static boolean isInteger(String s) {
         return pattern.matcher(s).matches();
     }
 }

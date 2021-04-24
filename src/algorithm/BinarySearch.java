@@ -13,7 +13,7 @@ public class BinarySearch extends Search{
     }
 
     public int searchOfRange(int[] arr, int find, int left, int right){
-        if(left>right)
+        if(left>=right)
         {
             return -1;
         }

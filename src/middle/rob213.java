@@ -18,6 +18,7 @@ public class rob213 {
         if (length == 1) {
             return nums[0];
         }
+        /* 思路:维护两个dp,一个dp可以偷0而不可以偷最后，一个dp不能偷0而可以偷最后 */
         int[] dp1 = new int[length];
         int[] dpn = new int[length];
         dp1[0] = nums[0];

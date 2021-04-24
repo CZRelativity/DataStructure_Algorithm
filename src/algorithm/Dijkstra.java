@@ -39,7 +39,7 @@ public class Dijkstra extends GraphExample {
         for (int i = 0; i < size; i++) {
             if (edges[startVertex][i] == 0) {
                 //由于往后是直接用“<”来查找并更新最短路径，所以初始化时候把所有到不了的点先设成最大值，以免原值为0的时候对“<”造成干扰
-                distance[i] = 999;
+                distance[i] = Integer.MAX_VALUE;
             } else {
                 //能到的点先把距离放进数组，如果以后有到这个点更短的路径再更新
                 distance[i] = edges[startVertex][i];
@@ -52,10 +52,10 @@ public class Dijkstra extends GraphExample {
 
         solved[startVertex] = true;
 
-        int minDistance, minVertex = 99;
+        int minDistance, minVertex = Integer.MAX_VALUE;
         while (true) {
             //每一次循环都必须把最小路径长度初始化，这样跟
-            minDistance = 999;
+            minDistance = Integer.MAX_VALUE;
             //为什么一个顶点在一次遍历里路径最短就一定是最短路径了呢，因为这说明从顶点经过其他点再到这个点路径都一定更长
             for (int i = 0; i < size; i++) {
                 if (!solved[i] && distance[i] < minDistance) {
@@ -87,9 +87,9 @@ public class Dijkstra extends GraphExample {
             result.append(vertexList.get(v)).append(" >- ");
             v = preVertex[v];
         }
-        System.out.println("从"+getVertex(startVertex)+"到"+getVertex(targetVertex)+"的最短路径：");
+        System.out.println("从" + getVertex(startVertex) + "到" + getVertex(targetVertex) + "的最短路径：");
         System.out.println(result.append(vertexList.get(startVertex)).reverse());
-        System.out.println("长度：" +minDistance);
+        System.out.println("长度：" + minDistance);
 
     }
 

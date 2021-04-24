@@ -14,7 +14,7 @@ public class zigzagLevelOrder103 {
     private void test(){
         Integer[][] egA={{3,9,20,1,2,15,7,8,9,0},{},{1}};
         List<TreeNode> eg=new ArrayList<>();
-        Arrays.stream(egA).forEach(e->eg.add(TreeNodeTool.buildOrderBt(e)));
+        Arrays.stream(egA).forEach(e->eg.add(TreeNodeTool.buildOrderBT(e)));
         for(TreeNode root:eg){
             zigzagLevelOrder(root);
             res.forEach(System.out::println);

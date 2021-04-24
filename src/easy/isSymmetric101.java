@@ -13,12 +13,12 @@ public class isSymmetric101 {
     }
 
     private void test() {
-        Integer[][] eg = {{1, 2, 2, 3, 4, 4, 3}, {1, 2, 2, null, 3, null, 3},
+        Integer[][] eg = {{}, {1, 2, 2, 3, 4, 4, 3}, {1, 2, 2, null, 3, null, 3},
                 {4, -57, -57, null, 67, 67, null, null, -97, -97}, {2, 3, 3, 4, 5, null, 4}};
         for (Integer[] e : eg) {
-            TreeNode root = TreeNodeTool.buildOrderBt(e);
+            TreeNode root = TreeNodeTool.buildOrderBT(e);
             TreeNodeTool.outBfBt(root);
-            System.out.println(isSymmetricBf(root));
+            System.out.println(dfs(root));
         }
     }
 
@@ -31,18 +31,6 @@ public class isSymmetric101 {
         queue1.add(root);
         //改递归
         return isLevelSymmetric(queue1, queue2);
-//        while(!queue1.isEmpty()||!queue2.isEmpty()){
-//            if(queue1.isEmpty()){
-//                if(isLevelNotSymmetric(queue2, queue1)){
-//                    return false;
-//                }
-//            }else {
-//                if(isLevelNotSymmetric(queue1, queue2)){
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
     }
 
     //广度优先/层序搜索 28% - -
@@ -111,4 +99,20 @@ public class isSymmetric101 {
                 isNodeSymmetric(root.right, mirror.left);
     }
 
+    public boolean dfs(TreeNode root) {
+        return root == null || mirrorDfs(root, root);
+    }
+
+    public boolean mirrorDfs(TreeNode root, TreeNode mirror) {
+        //终止
+        if (root == null && mirror == null) {
+            return true;
+        }
+        if (root == null || mirror == null) {
+            return false;
+        }
+        return root.val == mirror.val &&
+                mirrorDfs(root.left, mirror.right) &&
+                mirrorDfs(root.right, mirror.left);
+    }
 }

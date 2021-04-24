@@ -8,14 +8,10 @@ import java.util.List;
 public class threeSum15 {
     public static void main(String[] args) {
         threeSum15 t = new threeSum15();
-        int[] example1 = new int[]{-1, 0, 1, 2, -1, -4};
-        int[] example2 = new int[]{0, 0, 0, 0, 0};
-        int[] example3 = new int[]{-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6};
-        int[] example4 = new int[]{-1, 0, 1};
-        int[] example5 = new int[]{-2, 0, 1, 1, 2};
-        List<List<Integer>> result = t.solveDoublePointer(example5);
-        for (List<Integer> list : result) {
-            System.out.println(Arrays.toString(list.toArray()));
+        int[][] eg = {{-1, 0, 1, 2, -1, -4}, {0, 0, 0, 0, 0}, {-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6}, {-1, 0, 1}, {-2, 0, 1, 1, 2}};
+        for (int[] e : eg) {
+            t.threeSum(e).forEach(System.out::println);
+            System.out.println();
         }
     }
 
@@ -97,5 +93,51 @@ public class threeSum15 {
             result = binarySearch(nums, mid + 1, to, target);
         }
         return result;
+    }
+
+    private int binarySearch1(int[] nums, int left, int right, int target) {
+        if (left > right) {
+            return -1;
+        }
+        while (left <= right) {
+            int mid = (right - left) / 2 + left;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> ret = new ArrayList<>();
+        Arrays.sort(nums);
+        int left = 0, right = nums.length - 1;
+        while (left < right - 1) {
+            //去重
+            if (left > 0 && nums[left] == nums[left - 1]) {
+                left++;
+                continue;
+            }
+            while (left < right - 1) {
+                //去重
+                if (right < nums.length - 1 && nums[right] == nums[right + 1]) {
+                    right--;
+                    continue;
+                }
+                if (binarySearch1(nums, left + 1, right - 1, -nums[left] - nums[right]) != -1) {
+                    List<Integer> e = new ArrayList<>();
+                    Collections.addAll(e, nums[left], -nums[left] - nums[right], nums[right]);
+                    ret.add(e);
+                }
+                right--;
+            }
+            left++;
+            right = nums.length - 1;
+        }
+        return ret;
     }
 }

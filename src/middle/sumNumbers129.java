@@ -12,7 +12,7 @@ public class sumNumbers129 {
     private void test() {
         Integer[][] eg = {{1, 2, 3}, {4, 9, 0, 5, 1},{},{1}};
         for (Integer[] e : eg) {
-            TreeNode root = TreeNodeTool.buildOrderBt(e);
+            TreeNode root = TreeNodeTool.buildOrderBT(e);
             System.out.println(sumNumbers(root));
         }
     }

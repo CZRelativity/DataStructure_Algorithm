@@ -10,9 +10,9 @@ public class HeapSort extends Sort {
 //        t.testRandom(8000);
     }
 
-    private void test(){
-        int[][] eg={{6, 4, 8, 5, 7, 9, 1, 3, 2},{4,6,8,5,9},};
-        for(int[] e:eg){
+    private void test() {
+        int[][] eg = {{6, 4, 8, 5, 7, 9, 1, 3, 2}, {4, 6, 8, 5, 9},};
+        for (int[] e : eg) {
             System.out.println(Arrays.toString(sort(e)));
         }
     }
@@ -20,15 +20,16 @@ public class HeapSort extends Sort {
     @Override
     public int[] sort(int[] arr) {
         int i, length = arr.length;
-        //第一次，从第一个非叶子节点开始，由下至上由左至右，构建大顶堆，这里重复的时候每次从前一个非叶子结点开始，有点像冒泡
+        /* 第一次，从第一个非叶子节点开始，由下至上由左至右，构建大顶堆，这里重复的时候每次从前一个非叶子结点开始，有点像冒泡
+         * 为什么不能直接getMaxHeadHeap(0),hey，因为比较的时候我们只考虑自己的两个子结点，只有做了调整才要继续递归 */
         for (i = length / 2 - 1; i >= 0; i--) {
             getMaxHeadHeap(i, length, arr);
         }
         //大顶堆构建完成，最大值从头交换到尾，然后排除尾，整理堆重新满足大顶堆，然后重复
         for (; length > 1; length--) {
-            swap(arr,0,length-1);
+            swap(arr, 0, length - 1);
             //现在我们把一个小的数放在最前面，因为是一个大顶堆的缘故，所以只需要做一次自顶向下的变动，因为除了才交换的节点，其他所有父结点都大于他的子结点
-            getMaxHeadHeap(0,length-1,arr);
+            getMaxHeadHeap(0, length - 1, arr);
             //之前这里也写的length,就有可能动到已经排好的末尾元素
         }
         return arr;

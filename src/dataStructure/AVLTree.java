@@ -71,10 +71,6 @@ public class AVLTree {
         }
     }
 
-    /**
-     * @param root
-     * @return
-     */
     public boolean isBalance(SimpleNode root) {
         if (Math.abs(root.getLeftHeight() - root.getRightHeight()) > 1) {
             return false;
@@ -131,15 +127,15 @@ public class AVLTree {
             return Math.max(left == null ? 0 : left.height(), right == null ? 0 : right.height()) + 1;
         }
 
-        public int minHeight(){
-            if(left==null&&right==null){
+        public int minHeight() {
+            if (left == null && right == null) {
                 return 1;
-            }else if(left==null){
+            } else if (left == null) {
                 return right.minHeight();
-            }else if(right==null){
+            } else if (right == null) {
                 return left.minHeight();
-            }else {
-                return Math.min(left.minHeight(),right.minHeight());
+            } else {
+                return Math.min(left.minHeight(), right.minHeight());
             }
         }
 

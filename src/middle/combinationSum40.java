@@ -12,11 +12,11 @@ public class combinationSum40 {
 
     List<List<Integer>> res;
 
-    private void test(){
-        int[][] egA={{10, 1, 2, 7, 6, 1, 5},{2, 5, 2, 1, 2},{1,1,1,1,1,1,}};
-        int[] egT={8,5,3,};
-        for(int i=0;i<egA.length;i++){
-            combinationSum2(egA[i],egT[i]);
+    private void test() {
+        int[][] egA = {{10, 1, 2, 7, 6, 1, 5}, {2, 5, 2, 1, 2}, {1, 1, 1, 1, 1, 1,}};
+        int[] egT = {8, 5, 3,};
+        for (int i = 0; i < egA.length; i++) {
+            combinationSum2(egA[i], egT[i]);
             //日了，List的toString方法这么香，他是怎么写的呢，在AbstractCollection里
             res.forEach(System.out::println);
             System.out.println();
@@ -25,7 +25,7 @@ public class combinationSum40 {
 
     //时间44%
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        res=new ArrayList<>();
+        res = new ArrayList<>();
         Arrays.sort(candidates);
         combine(new ArrayList<>(), candidates, 0, 0, target);
         return res;
@@ -45,12 +45,14 @@ public class combinationSum40 {
         //可以从上一个数开始，但是不能从上一个数之前开始了，不然就会出现3 5 5 3这样的重复
         for (int i = start; i < candidates.length; i++) {
             /* 妈的为什么！加了这段以后又完美剪枝了 *这一剪枝的使用条件是有序！
-            * &&的条件真实是依次判断的，相当于是一个if的嵌套！！！如果把边界写在前面，是可以提前退出的，就不会再
-            * 进行后面可能导致空指针异常的判断，前面也写错了但是没有爆空指针草 */
-            while(i>start&&i<candidates.length&&candidates[i-1]==candidates[i]){
+             * &&的条件真实是依次判断的，相当于是一个if的嵌套！！！如果把边界写在前面，是可以提前退出的，就不会再
+             * 进行后面可能导致空指针异常的判断，前面也写错了但是没有爆空指针草 */
+
+            //!!!又遇到了这个问题，记住下面去重并防止空指针的格式
+            while (i > start && i < candidates.length && candidates[i - 1] == candidates[i]) {
                 i++;
             }
-            if(i>=candidates.length){
+            if (i >= candidates.length) {
                 break;
             }
             cur.add(candidates[i]);

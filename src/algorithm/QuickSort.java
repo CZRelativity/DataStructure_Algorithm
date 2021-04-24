@@ -37,4 +37,34 @@ public class QuickSort extends Sort {
         sortOfRange(arr, indexKey + 1, to);
         //分别对这两部分进一步排序（不包括基准，也就是说其实基准在整个数组里的位置已经确定了）
     }
+
+    //高级三路快排
+    private void sort3(int[] arr, int from, int to) {
+        if (from >= to) {
+            return;
+        }
+        int pivot = arr[from];
+        int left = from, right = to + 1, i = left + 1;
+        while (i < right) {
+            if (arr[i] > pivot) {
+                left++;
+                swap(arr, left, i);
+                i++;
+            } else if (arr[i] == pivot) {
+                i++;
+            } else {
+                right--;
+                swap(arr, right, i);
+            }
+        }
+        swap(arr, from, left);
+        sort3(arr, from, left - 1);
+        sort3(arr, right, to);
+    }
+
+    private void swap(int[] arr, int i1, int i2) {
+        int temp = arr[i1];
+        arr[i1] = arr[i2];
+        arr[i2] = temp;
+    }
 }

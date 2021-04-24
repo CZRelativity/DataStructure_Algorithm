@@ -22,6 +22,8 @@ public class BinarySearchExtra extends Search {
         int mid;
         //递归也是靠下标来终止的，但是否这个就是最好的退出循环条件呢
         while (left <= right) {
+            /* 细节：mid=left+(right-left)/2更好，
+            因为(left+right)在下标很大的时候容易造成越界 */
             mid = (right + left) / 2;
             if (arr[mid] == find) {
                 return mid;

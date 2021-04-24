@@ -5,11 +5,8 @@ public class Connect117 {
 
     }
 
-    private void test(){
-        Integer[][] eg={{1,2,3,4,5,null,7},{}};
-        for(Integer[] e:eg){
+    private void test() {
 
-        }
     }
 
     public Node connect(Node root) {
@@ -39,7 +36,6 @@ public class Connect117 {
         Node next;
 
         public Node() {
-
         }
 
         public Node(int val) {

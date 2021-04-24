@@ -14,7 +14,7 @@ public class minimumTotal120 {
     private void test() {
         String[] eg = {"[[2],[3,4],[6,5,7],[4,1,8,3]]", "[[-10]]", "[[1],[2,3]]"};
         for (String e : eg) {
-            System.out.println(minimumTotal(GeneralTool.getList2(e)));
+            System.out.println(minimumTotalOn(GeneralTool.getList2(e)));
         }
     }
 
@@ -38,5 +38,18 @@ public class minimumTotal120 {
             }
         }
         return minTotal;
+    }
+
+    /* O(n)要点：自下而上，规避边界；最后结果一定固定在dp[0]
+     * dp[]只需一行，随dp不断覆盖，又不会有影响，因为自下而上是利用这一位和后一位dp出这一位 */
+    public int minimumTotalOn(List<List<Integer>> triangle) {
+        int n = triangle.size();
+        int[] dp = new int[n + 1];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                dp[j] = Math.min(dp[j], dp[j + 1]) + triangle.get(i).get(j);
+            }
+        }
+        return dp[0];
     }
 }

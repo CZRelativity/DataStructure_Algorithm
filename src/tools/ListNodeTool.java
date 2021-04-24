@@ -1,5 +1,7 @@
 package tools;
 
+import java.util.List;
+
 public class ListNodeTool {
 
     public static void outputList(ListNode head) {
@@ -36,13 +38,9 @@ public class ListNodeTool {
     }
 
     public static ListNode buildCycleList(int[] nums, int cycConnectPos) {
-        if (nums.length == 0) {
-            return null;
-        }
-        ListNode head = new ListNode(nums[0]);
+        ListNode head = buildList(nums);
         ListNode end = head;
-        for (int i = 1; i < nums.length; i++) {
-            end.next = new ListNode(nums[i]);
+        while (end != null && end.next != null) {
             end = end.next;
         }
         if (cycConnectPos >= 0) {
